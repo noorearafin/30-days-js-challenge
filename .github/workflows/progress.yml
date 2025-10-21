@@ -1,25 +1,40 @@
 name: Update Progress
+
 on:
   schedule:
-    - cron: '0 18 * * *'   # Runs daily at 6 PM UTC
-  workflow_dispatch:        # allows manual run
+    - cron: '0 0 * * *'   # adjust schedule as needed
+  workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
-  update:
+  update-progress:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - name: Use Node.js
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+
+      - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '18'
-      - name: Update README progress
+
+      - name: Run update script
         run: |
-          node .github/scripts/updateProgress.js
-      - name: Commit and Push if Changed
+          # run the script that updates files (adjust path)
+          node ./scripts/update-progress.js
+
+      - name: Commit & push changes (if any)
         run: |
-          git config user.name "noorearafin"
-          git config user.email "noorearafin@gmail.com"
-          git add .
-          git diff --quiet && echo "No changes" || git commit -m "Auto update progress"
-          git push
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Update progress by workflow" || echo "No changes to commit"
+          # push using the checked-out token (persist-credentials: true ensures this works)
+          git push origin HEAD:${{ github.ref_name }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
