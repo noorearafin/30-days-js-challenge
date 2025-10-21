@@ -26,7 +26,7 @@ jobs:
       - name: Run update script
         run: |
           # run the script that updates files (adjust path)
-          node ./scripts/update-progress.js
+          node ./scripts/updateProgress.js
 
       - name: Commit & push changes (if any)
         run: |
