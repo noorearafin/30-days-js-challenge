@@ -7,14 +7,28 @@ jobs:
   update:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - name: Setup Node
+      - name: Fresh checkout (force no cache)
+        uses: actions/checkout@v4
+        with:
+          clean: true
+          fetch-depth: 0
+
+      - name: Confirm working directory
+        run: |
+          echo "Working directory:"
+          pwd
+          echo "Files:"
+          ls -R .github/scripts || echo "No scripts folder found!"
+
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 18
-      - name: Update progress
-        run: node $GITHUB_WORKSPACE/.github/scripts/updateProgress.js
-      - name: Commit changes
+
+      - name: Run progress update script
+        run: node .github/scripts/updateProgress.js
+
+      - name: Commit and push progress
         run: |
           git config user.name "noorearafin"
           git config user.email "noorearafin@gmail.com"
