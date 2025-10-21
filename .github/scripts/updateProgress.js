@@ -1,19 +1,18 @@
-import fs from "fs";
+const fs = require("fs");
+const path = require("path");
 
-const progress = JSON.parse(fs.readFileSync("progress.json", "utf8"));
-let table = `| Day | Status |\n|-----|--------|\n`;
-Object.keys(progress).forEach(day => {
-    table += `| ${day} | ${progress[day]} |\n`;
-});
+const PROGRESS_FILE = path.join(__dirname, "../../progress.json");
 
-const readme = fs.readFileSync("README.md", "utf8");
-const newSection =
-    `## 📅 Progress Tracker\n\n${table}\n_Last updated: ${new Date().toUTCString()}_`;
+let progress = {};
+if (fs.existsSync(PROGRESS_FILE)) {
+    progress = JSON.parse(fs.readFileSync(PROGRESS_FILE, "utf8"));
+} else {
+    progress = { completedDays: 0 };
+}
 
-const updated = readme.replace(
-    /## 📅 Progress Tracker[\s\S]*?(?=\n##|$)/,
-    newSection
-);
+progress.completedDays += 1;
 
-fs.writeFileSync("README.md", updated);
-console.log("✅ README progress updated");
+fs.writeFileSync(PROGRESS_FILE, JSON.stringify(progress, null, 2));
+
+console.log(`✅ Progress updated! Completed days: ${progress.completedDays}`);
+
