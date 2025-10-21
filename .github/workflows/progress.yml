@@ -1,0 +1,25 @@
+name: Update Progress
+on:
+  schedule:
+    - cron: '0 18 * * *'   # Runs daily at 6 PM UTC
+  workflow_dispatch:        # allows manual run
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      - name: Update README progress
+        run: |
+          node .github/scripts/updateProgress.js
+      - name: Commit and Push if Changed
+        run: |
+          git config user.name "GitHub Action"
+          git config user.email "action@github.com"
+          git add .
+          git diff --quiet && echo "No changes" || git commit -m "Auto update progress"
+          git push
