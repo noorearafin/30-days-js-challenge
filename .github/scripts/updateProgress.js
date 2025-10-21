@@ -15,5 +15,4 @@ progress.completedDays += 1;
 fs.writeFileSync(PROGRESS_FILE, JSON.stringify(progress, null, 2));
 
 console.log(`✅ Progress updated! Completed days: ${progress.completedDays}`);
-//herkk
 
