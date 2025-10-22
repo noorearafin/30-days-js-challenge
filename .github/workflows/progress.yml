@@ -1,5 +1,9 @@
 name: Update Progress & README
 
+# allow the workflow to push changes using the GITHUB_TOKEN
+permissions:
+  contents: write
+
 on:
   push:
     branches:
@@ -16,6 +20,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           persist-credentials: true
+          token: ${{ secrets.ACTIONS_PAT }}   # use PAT when GITHUB_TOKEN cannot push
 
       - name: Setup Node
         uses: actions/setup-node@v4
