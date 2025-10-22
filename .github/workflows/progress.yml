@@ -1,23 +1,41 @@
-name: Update Progress
+name: Update Progress & README
 
 on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: "0 0 * * *" # daily at 00:00 UTC
   workflow_dispatch:
 
 jobs:
   update:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 18
-      - name: Update progress
-        run: node $GITHUB_WORKSPACE/.github/scripts/updateProgress.js
-      - name: Commit changes
+
+      - name: Normalize progress.json
+        run: node .github/scripts/updateProgress.js
+
+      - name: Generate README
+        run: node .github/scripts/generateReadme.js
+
+      - name: Commit & push changes (if any)
         run: |
           git config user.name "noorearafin"
           git config user.email "noorearafin@gmail.com"
-          git add progress.json
-          git commit -m "✅ Auto update progress"
-          git push
+          git add progress.json README.md || true
+          if ! git diff --staged --quiet; then
+            git commit -m "chore(ci): auto-update progress and README" || echo "commit failed"
+            git push
+          else
+            echo "No changes to commit"
+          fi
