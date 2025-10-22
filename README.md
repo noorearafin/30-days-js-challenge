@@ -1,1 +1,35 @@
 # 30-days-js-challenge
+
+Progress: 3/30 (10%)
+
+## Days
+- **Day 1**: Completed ✅
+- **Day 2**: Completed ✅
+- **Day 3**: Completed ✅
+- **Day 4**: ⏳ Pending
+- **Day 5**: ⏳ Pending
+- **Day 6**: ⏳ Pending
+- **Day 7**: ⏳ Pending
+- **Day 8**: ⏳ Pending
+- **Day 9**: ⏳ Pending
+- **Day 10**: ⏳ Pending
+- **Day 11**: ⏳ Pending
+- **Day 12**: ⏳ Pending
+- **Day 13**: ⏳ Pending
+- **Day 14**: ⏳ Pending
+- **Day 15**: ⏳ Pending
+- **Day 16**: ⏳ Pending
+- **Day 17**: ⏳ Pending
+- **Day 18**: ⏳ Pending
+- **Day 19**: ⏳ Pending
+- **Day 20**: ⏳ Pending
+- **Day 21**: ⏳ Pending
+- **Day 22**: ⏳ Pending
+- **Day 23**: ⏳ Pending
+- **Day 24**: ⏳ Pending
+- **Day 25**: ⏳ Pending
+- **Day 26**: ⏳ Pending
+- **Day 27**: ⏳ Pending
+- **Day 28**: ⏳ Pending
+- **Day 29**: ⏳ Pending
+- **Day 30**: ⏳ Pending
