@@ -1,13 +1,13 @@
 # 30-days-js-challenge
 
-Progress: 4/30 (13%)
+Progress: 5/30 (17%)
 
 ## Days
 - **Day 1**: Completed ✅
 - **Day 2**: Completed ✅
 - **Day 3**: Completed ✅
 - **Day 4**: Completed ✅
-- **Day 5**: ⏳ Pending
+- **Day 5**: Completed ✅
 - **Day 6**: ⏳ Pending
 - **Day 7**: ⏳ Pending
 - **Day 8**: ⏳ Pending
