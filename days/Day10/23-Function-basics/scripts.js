@@ -11,5 +11,6 @@ function phone(model, price) {
     return model, price;
 }
 
-phone('Iphone 13', 67000);
+const main = phone('Iphone 13', 67000);
 
+console.log(main);
