@@ -1,6 +1,6 @@
 # 30-days-js-challenge
 
-Progress: 9/30 (30%)
+Progress: 10/30 (33%)
 
 ## Days
 - **Day 1**: Completed ✅
@@ -12,7 +12,7 @@ Progress: 9/30 (30%)
 - **Day 7**: Completed ✅
 - **Day 8**: Completed ✅
 - **Day 9**: Completed ✅
-- **Day 10**: ⏳ Pending
+- **Day 10**: Completed ✅
 - **Day 11**: ⏳ Pending
 - **Day 12**: ⏳ Pending
 - **Day 13**: ⏳ Pending
